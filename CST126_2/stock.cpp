@@ -8,8 +8,10 @@
 #include <sstream>
 #include "stock.h"
 #include <string>
+#include <iomanip>
 
 using namespace std;
+
 
 string stock::getSymbol()
 {
@@ -42,13 +44,27 @@ double stock::pOverE()
 	return price / earnings;
 }
 
-void printMe(stock s, string symbol, string name, double price, double earnings)
+void stock::print()
 {
-	cout << s.getSymbol() << " " << s.getName() << " " << s.getPrice() << " " << s.getEarnings() << '\n';
-}
 
-void print(stock s)
-{
-	{ cout << s.getSymbol() << " " << s.getName() << " " << s.getPrice() << " " << s.getEarnings() << endl; };
+	
+
+	double a = getPrice();
+	double b = getEarnings();
+	double pOverE = a / b;
+	cout << setw(4);
+	cout << left << getSymbol() << '\t';
+	cout << setw(25);
+	cout << left << getName();
+	cout << setw(8);
+	cout << "Price: ";
+	cout << setw(12);
+	cout << getPrice();
+	cout << setw(10);
+	cout << "Earnings: ";
+	cout << setw(12);
+	cout << getEarnings();
+	cout << setw(10);
+	cout << "Price over Earnings: " << pOverE << endl;
 
 }
